@@ -2,12 +2,12 @@ package CAADAA;
 
 public class CAADAA {
     private final static String [] alphabet = {"A","B","C","D","E","F","G","H","I","J",
-        "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",",","!","?"};
     private final static String[] morse = {".-", "-..." ,"-.-." ,"-..", "."
                 ,"..-." ,"--.", "...." ,".." ,".---"
                 ,"-.-" ,".-.." ,"--" ,"-." ,"---" ,".--."
                 ,"--.-" ,".-." ,"..." ,"-" ,"..-" ,"...-" ,".--"
-                ,"-..-" ,"-.--" ,"--.."};
+                ,"-..-" ,"-.--" ,"--..",",","!","?"};
     private static int secondTracker;
     private static String Stage1cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
@@ -20,7 +20,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index + s;
-                    if(loc > 25) loc-= 25;
+                    if(loc > 28) loc-= 29;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -42,7 +42,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index + s++;
-                    if(loc > 25) loc-= 25;
+                    while(loc > 28) loc-= 29;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -65,7 +65,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index +s;
-                    if(loc > 25) loc-= 25;
+                    if(loc > 28) loc-= 29;
                     b[i] = morse[loc];
                 }
                 else if(a.equals(" ")){
@@ -86,7 +86,7 @@ public class CAADAA {
                 if(a.equals(morse[j])){ 
                     index = j;
                     loc = index +s;
-                    if(loc > 25) loc-= 25;
+                    if(loc > 28) loc-= 29;
                     b[i] = ""+alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -108,7 +108,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index - s;
-                    if(loc < 0) loc+= 25;
+                    if(loc < 0) loc+= 29;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -131,7 +131,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index - --s;
-                    if(loc < 0) loc+= 25;
+                    while(loc < 0) loc+= 29;
                     b = alphabet[loc]+b;
                 }
                 else if(a.equals(" ")){
@@ -153,7 +153,7 @@ public class CAADAA {
                 if(a.equals(morse[j])){ 
                     index = j;
                     loc = index - s;
-                    if(loc < 0) loc+= 25;
+                    if(loc < 0) loc+= 29;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -174,7 +174,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index - s;
-                    if(loc < 0) loc+= 25;
+                    if(loc < 0) loc+= 29;
                     b[i]=morse[loc];
                 }
                 else if(a.equals(" ")){
