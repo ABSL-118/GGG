@@ -36,6 +36,7 @@ public class CAADAA {
         int index;
         int loc;
         String b = "";
+        secondTracker = s+cipher.length()-3;
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
             for (int j = 0; j < alphabet.length; j++) {
@@ -51,8 +52,10 @@ public class CAADAA {
                 }
             }
         }
-        secondTracker = s;
         return b;
+    }
+    public void seco(){
+        System.out.println(secondTracker);
     }
     private static String[] Stage3cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
