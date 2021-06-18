@@ -36,7 +36,7 @@ public class CAADAA {
         int index;
         int loc;
         String b = "";
-        secondTracker = s+cipher.length()-3;
+        secondTracker = s+cipher.length();
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
             for (int j = 0; j < alphabet.length; j++) {
@@ -48,10 +48,12 @@ public class CAADAA {
                 }
                 else if(a.equals(" ")){
                     b+=a;
+                    s++;
                     break;
                 }
             }
         }
+        
         return b;
     }
     public void seco(){
@@ -139,6 +141,7 @@ public class CAADAA {
                 }
                 else if(a.equals(" ")){
                     b=a+b;
+                    --s;
                     break;
                 }
             }
