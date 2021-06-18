@@ -2,12 +2,14 @@ package CAADAA;
 
 public class CAADAA {
     private final static String [] alphabet = {"A","B","C","D","E","F","G","H","I","J",
-        "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",",","!","?"};
+        "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",",","!","?",".",
+        "1","2","3","4","5","6","7","8","9","0"};
     private final static String[] morse = {".-", "-..." ,"-.-." ,"-..", "."
                 ,"..-." ,"--.", "...." ,".." ,".---"
                 ,"-.-" ,".-.." ,"--" ,"-." ,"---" ,".--."
                 ,"--.-" ,".-." ,"..." ,"-" ,"..-" ,"...-" ,".--"
-                ,"-..-" ,"-.--" ,"--..",",","!","?"};
+                ,"-..-" ,"-.--" ,"--..",",","!","?"," .",
+                "1","2","3","4","5","6","7","8","9","0"};
     private static int secondTracker;
     private static String Stage1cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
@@ -20,7 +22,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index + s;
-                    if(loc > 28) loc-= 29;
+                    if(loc > 39) loc-= 40;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -36,14 +38,13 @@ public class CAADAA {
         int index;
         int loc;
         String b = "";
-        secondTracker = s+cipher.length();
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
             for (int j = 0; j < alphabet.length; j++) {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index + s++;
-                    while(loc > 28) loc-= 29;
+                    while(loc > 39) loc-= 40;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -56,9 +57,6 @@ public class CAADAA {
         
         return b;
     }
-    public void seco(){
-        System.out.println(secondTracker);
-    }
     private static String[] Stage3cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
@@ -70,7 +68,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index +s;
-                    if(loc > 28) loc-= 29;
+                    if(loc > 39) loc-= 40;
                     b[i] = morse[loc];
                 }
                 else if(a.equals(" ")){
@@ -91,7 +89,7 @@ public class CAADAA {
                 if(a.equals(morse[j])){ 
                     index = j;
                     loc = index +s;
-                    if(loc > 28) loc-= 29;
+                    if(loc > 39) loc-= 40;
                     b[i] = ""+alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -113,7 +111,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index - s;
-                    if(loc < 0) loc+= 29;
+                    if(loc < 0) loc+= 40;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -136,7 +134,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index - --s;
-                    while(loc < 0) loc+= 29;
+                    while(loc < 0) loc+= 40;
                     b = alphabet[loc]+b;
                 }
                 else if(a.equals(" ")){
@@ -159,7 +157,7 @@ public class CAADAA {
                 if(a.equals(morse[j])){ 
                     index = j;
                     loc = index - s;
-                    if(loc < 0) loc+= 29;
+                    if(loc < 0) loc+= 40;
                     b+=alphabet[loc];
                 }
                 else if(a.equals(" ")){
@@ -180,7 +178,7 @@ public class CAADAA {
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index - s;
-                    if(loc < 0) loc+= 29;
+                    if(loc < 0) loc+= 40;
                     b[i]=morse[loc];
                 }
                 else if(a.equals(" ")){
@@ -191,10 +189,22 @@ public class CAADAA {
         }
         return b;
     }
-    public String [] ciph(String cip,int s){
+    public String [] ciphStorage(String cip,int s){
         return Stage4cipher(Stage3cipher(Stage2cipher(Stage1cipher(cip,s),s),s),s);
     }
-    public String deciph(String [] cip,int s){
-        return Stage1decipher(Stage2decipher(Stage3decipher(Stage4decipher(cip,s),s),secondTracker),s);
+    public void printCipher(String cip, int s){
+        String [] cipher = ciphStorage(cip,s);
+        for (String out : cipher) {
+            System.out.print(out);
+        }
+        System.out.println("");
+    }
+    public String deciph(String cip,int s){
+        secondTracker = s+cip.length();
+        String []ciph = new String[cip.length()];
+        for (int i = 0; i < cip.length(); i++) {
+            ciph[i] = ""+cip.charAt(i);
+        }
+        return Stage1decipher(Stage2decipher(Stage3decipher(Stage4decipher(ciph,s),s),secondTracker),s);
     }
 }
