@@ -1,5 +1,7 @@
 package CAADAA;
 
+import java.util.ArrayList;
+
 public class CAADAA {
     private final static String [] alphabet = {"A","B","C","D","E","F","G","H","I","J",
         "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",",","!","?",".",
@@ -11,6 +13,10 @@ public class CAADAA {
                 ,"-..-" ,"-.--" ,"--..",",","!","?"," .",
                 "1","2","3","4","5","6","7","8","9","0"};
     private static int secondTracker;
+    private static int transform = 0;
+    private static int compare = 0;
+    private static final ArrayList<Integer> comparisons = new ArrayList<>();
+    private static final ArrayList<Integer> trans = new ArrayList<>();
     private static String Stage1cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
@@ -19,11 +25,13 @@ public class CAADAA {
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
             for (int j = 0; j < alphabet.length; j++) {
+                compare++;
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index + s;
                     if(loc > 39) loc-= 40;
                     b+=alphabet[loc];
+                    transform++;
                 }
                 else if(a.equals(" ")){
                     b+=a;
@@ -41,11 +49,13 @@ public class CAADAA {
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
             for (int j = 0; j < alphabet.length; j++) {
+                compare++;
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index + s++;
                     while(loc > 39) loc-= 40;
                     b+=alphabet[loc];
+                    transform++;
                 }
                 else if(a.equals(" ")){
                     b+=a;
@@ -65,11 +75,13 @@ public class CAADAA {
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
             for (int j = 0; j < alphabet.length; j++) {
+                compare++;
                 if(a.equals(alphabet[j])){ 
                     index = j;
                     loc = index +s;
                     if(loc > 39) loc-= 40;
                     b[i] = morse[loc];
+                    transform++;
                 }
                 else if(a.equals(" ")){
                     b[i] =""+a;
@@ -86,11 +98,13 @@ public class CAADAA {
         for (int i = 0; i < cipher.length; i++) {
             String a = cipher[i];
             for (int j = 0; j < morse.length; j++) {
+                compare++;
                 if(a.equals(morse[j])){ 
                     index = j;
                     loc = index +s;
                     if(loc > 39) loc-= 40;
                     b[i] = ""+alphabet[loc];
+                    transform++;
                 }
                 else if(a.equals(" ")){
                     b[i] =""+a;
@@ -100,6 +114,19 @@ public class CAADAA {
         }
         return b;
     }
+    private static void ins(){
+        comparisons.add(compare);
+        trans.add(transform);
+    }
+
+    public ArrayList<Integer> getComparisons() {
+        return comparisons;
+    }
+
+    public ArrayList<Integer> getTrans() {
+        return trans;
+    }
+    
     private static String Stage1decipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
@@ -197,6 +224,7 @@ public class CAADAA {
         for (String out : cipher) {
             System.out.print(out);
         }
+        ins();
         System.out.println("");
     }
     public String deciph(String cip,int s){
