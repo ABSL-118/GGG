@@ -13,13 +13,13 @@ public class CAADAA {
                 ,"-..-" ,"-.--" ,"--..",",","!","?"," .",
                 "1","2","3","4","5","6","7","8","9","0"};
     private static int secondTracker;
-    private static int transform = 0;
-    private static int compare = 0;
-    private static int length = 0;
-    private static final ArrayList<Integer> comparisons = new ArrayList<>();
-    private static final ArrayList<Integer> trans = new ArrayList<>();
-    private static final ArrayList<Integer> lengths = new ArrayList<>();
-    private static String Stage1cipher(String cipher,int s){
+    private int transform = 0;
+    private int compare = 0;
+    private int length = 0;
+    private final ArrayList<Integer> comparisons = new ArrayList<>();
+    private final ArrayList<Integer> trans = new ArrayList<>();
+    private final ArrayList<Integer> lengths = new ArrayList<>();
+    private String Stage1cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
         int loc;
@@ -44,7 +44,7 @@ public class CAADAA {
         }
         return b;
     }
-    private static String Stage2cipher(String cipher,int s){
+    private String Stage2cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
         int loc;
@@ -70,7 +70,7 @@ public class CAADAA {
         
         return b;
     }
-    private static String[] Stage3cipher(String cipher,int s){
+    private String[] Stage3cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
         int loc;
@@ -94,7 +94,7 @@ public class CAADAA {
         }
         return b;
     }
-    private static String [] Stage4cipher(String[] cipher,int s){
+    private String [] Stage4cipher(String[] cipher,int s){
         int index;
         int loc;
         String [] b = new String[cipher.length];
@@ -117,7 +117,7 @@ public class CAADAA {
         }
         return b;
     }
-    private static void ins(){
+    private void ins(){
         comparisons.add(compare);
         trans.add(transform);
         lengths.add(length);
