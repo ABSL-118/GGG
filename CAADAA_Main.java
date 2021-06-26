@@ -1,4 +1,9 @@
-package CAADAA;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package caadaa;
 
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -9,8 +14,11 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.VBox;
 
-public class CAADAA_Main {
-    public class FXMain extends Application {
+/**
+ *
+ * @author Cemody
+ */
+public class FXMain extends Application {
     
     ArrayList<Integer> comparisons = new ArrayList<>();
     static ArrayList<Integer> trans1 = new ArrayList<>();
@@ -71,7 +79,10 @@ public class CAADAA_Main {
 
         primaryStage.show();
     }
-        
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         CAADAA a = new CAADAA();
         CAADAA b = new CAADAA();
@@ -138,5 +149,7 @@ public class CAADAA_Main {
         trans3 = c.getTrans();
 
         launch(args);
+        
     }
+    
 }
