@@ -85,8 +85,10 @@ public class CAADAA_Main {
         a.printCipher("It has been a lifetime struggle A never-ending fight", 2);
         a.printCipher("No revolution is worth anything unless it can defend itself!", 2);
         a.printCipher("I say to you, and you will understand, that it is a privilege to fight!.", 2);
+        a.printCipher("Technologies like artificial intelligence and robotics will take over human labor gradually.", 2);
         a.printCipher("Have you ever asked yourselves in an hour of meditation, which everyone finds during the the.", 2);
         a.printCipher("the war of work but for the moment as a child when we realized that the world could be counquered.", 2);
+        a.printCipher("It will affect the anonymity of a person that may challenge the power of the government to monitor the citizens.", 2);        
         a.printCipher("They'll conjure up images of used car dealers and door to door chariatans. This is our duty: to change their perception", 2);
         a.printCipher("We are warriors! Salesmen of north-eastern Pennsylvania, I ask you once more: Rise and be worthy of this historical hour", 2);
         a.printCipher("We must never acquiesce, for it is together, TOGETHER, THAT WE WILL PREVAIL! We must never cede control of the motherland! For it is together we prevail!", 2);
