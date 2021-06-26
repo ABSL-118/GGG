@@ -15,12 +15,15 @@ public class CAADAA {
     private static int secondTracker;
     private static int transform = 0;
     private static int compare = 0;
+    private static int length = 0;
     private static final ArrayList<Integer> comparisons = new ArrayList<>();
     private static final ArrayList<Integer> trans = new ArrayList<>();
+    private static final ArrayList<Integer> lengths = new ArrayList<>();
     private static String Stage1cipher(String cipher,int s){
         cipher= cipher.toUpperCase();
         int index;
         int loc;
+        length = cipher.length();
         String b = "";
         for (int i = 0; i < cipher.length(); i++) {
             String a = ""+cipher.charAt(i);
@@ -117,6 +120,7 @@ public class CAADAA {
     private static void ins(){
         comparisons.add(compare);
         trans.add(transform);
+        lengths.add(length);
     }
 
     public ArrayList<Integer> getComparisons() {
@@ -125,6 +129,10 @@ public class CAADAA {
 
     public ArrayList<Integer> getTrans() {
         return trans;
+    }
+    
+    public ArrayList<Integer> getLengths() {
+        return lengths;
     }
     
     private static String Stage1decipher(String cipher,int s){
